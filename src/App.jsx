@@ -2,52 +2,65 @@ import { Routes, Route, Link, useParams } from "react-router-dom"
 
 function Home() {
   return (
-    <div>
-      <h2>🏠 Home Page</h2>
-      <p>Welcome to my React Routing Single Page Application.</p>
-      <p>This project demonstrates client-side routing using React Router DOM.</p>
+    <div style={styles.card}>
+      <h1 style={styles.heading}>React Routing SPA</h1>
+      <p style={styles.subtext}>
+        Full Stack Experiment – Client Side Routing
+      </p>
 
-      <hr />
+      <div style={styles.divider}></div>
 
-      <p><strong>Name:</strong> Alok Kumar</p>
-      <p><strong>UID:</strong> 23BAI70536</p>
+      <p style={styles.text}>
+        Welcome to my Single Page Application built using React & Vite.
+      </p>
+      <p style={styles.text}>
+        This project demonstrates smooth navigation without page reload.
+      </p>
+
+      <div style={styles.infoBox}>
+        <p><strong>Name:</strong> Alok Kumar</p>
+        <p><strong>UID:</strong> 23BAI70536</p>
+      </div>
     </div>
   )
 }
 
 function About() {
   return (
-    <div>
-      <h2>ℹ️ About Page</h2>
-      <p>This SPA was developed as part of the Full Stack Experiment.</p>
-      <p>It showcases navigation without page reload using React Router.</p>
-      <p>React Router enables smooth user experience and state preservation.</p>
+    <div style={styles.card}>
+      <h2 style={styles.pageTitle}>About</h2>
+      <p style={styles.text}>
+        This SPA was developed as part of the Full Stack Lab Experiment.
+      </p>
+      <p style={styles.text}>
+        React Router DOM enables client-side navigation and dynamic routing.
+      </p>
     </div>
   )
 }
 
 function Contact() {
   return (
-    <div>
-      <h2>📞 Contact Page</h2>
-      <p>You can reach out for collaboration or project discussions.</p>
-      <p>Email: alok@example.com</p>
-      <p>LinkedIn: linkedin.com/in/alok</p>
+    <div style={styles.card}>
+      <h2 style={styles.pageTitle}>Contact</h2>
+      <p style={styles.text}>Feel free to connect:</p>
+      <p style={styles.text}>📧 alok@example.com</p>
+      <p style={styles.text}>🔗 linkedin.com/in/alok</p>
     </div>
   )
 }
 
 function Products() {
   return (
-    <div>
-      <h2>🛍 Products Page</h2>
-      <p>Select a product to view its details:</p>
+    <div style={styles.card}>
+      <h2 style={styles.pageTitle}>Products</h2>
+      <p style={styles.text}>Select a product:</p>
 
-      <ul>
-        <li><Link to="/products/101">Product 101</Link></li>
-        <li><Link to="/products/202">Product 202</Link></li>
-        <li><Link to="/products/303">Product 303</Link></li>
-      </ul>
+      <div style={styles.productList}>
+        <Link style={styles.productBtn} to="/products/101">Product 101</Link>
+        <Link style={styles.productBtn} to="/products/202">Product 202</Link>
+        <Link style={styles.productBtn} to="/products/303">Product 303</Link>
+      </div>
     </div>
   )
 }
@@ -56,33 +69,32 @@ function ProductDetail() {
   const { id } = useParams()
 
   return (
-    <div>
-      <h2>📦 Product Detail</h2>
-      <p>You are viewing details for:</p>
-      <p><strong>Product ID:</strong> {id}</p>
-      <p>This demonstrates dynamic routing using URL parameters.</p>
+    <div style={styles.card}>
+      <h2 style={styles.pageTitle}>Product Detail</h2>
+      <p style={styles.text}>Viewing product:</p>
+      <h3 style={styles.highlight}>Product ID: {id}</h3>
     </div>
   )
 }
 
 function NotFound() {
   return (
-    <div>
-      <h2>❌ 404 – Page Not Found</h2>
-      <p>The page you are looking for does not exist.</p>
-      <Link to="/">Go Back Home</Link>
+    <div style={styles.card}>
+      <h2 style={styles.pageTitle}>404</h2>
+      <p style={styles.text}>Page Not Found</p>
+      <Link style={styles.backBtn} to="/">⬅ Back Home</Link>
     </div>
   )
 }
 
 function App() {
   return (
-    <div style={{ padding: "20px", fontFamily: "Segoe UI" }}>
-      <nav style={{ marginBottom: "20px" }}>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
-        <Link to="/contact">Contact</Link> |{" "}
-        <Link to="/products">Products</Link>
+    <div style={styles.page}>
+      <nav style={styles.navbar}>
+        <Link style={styles.navlink} to="/">Home</Link>
+        <Link style={styles.navlink} to="/about">About</Link>
+        <Link style={styles.navlink} to="/contact">Contact</Link>
+        <Link style={styles.navlink} to="/products">Products</Link>
       </nav>
 
       <Routes>
@@ -95,6 +107,114 @@ function App() {
       </Routes>
     </div>
   )
+}
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    background: "linear-gradient(135deg, #f6d365, #fda085)", // warm tone
+    padding: "40px 20px",
+    fontFamily: "Poppins, sans-serif",
+  },
+
+  navbar: {
+    background: "rgba(255,255,255,0.35)",
+    backdropFilter: "blur(8px)",
+    padding: "12px 20px",
+    borderRadius: "12px",
+    display: "flex",
+    justifyContent: "center",
+    gap: "30px",
+    marginBottom: "35px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+  },
+
+  navlink: {
+    textDecoration: "none",
+    color: "#5a3e2b",
+    fontWeight: "500",
+    fontSize: "15px",
+  },
+
+  card: {
+    background: "white",
+    padding: "35px",
+    borderRadius: "18px",
+    maxWidth: "520px",
+    margin: "auto",
+    boxShadow: "0 18px 40px rgba(0,0,0,0.2)",
+  },
+
+  heading: {
+    fontFamily: "Playfair Display, serif",
+    fontSize: "30px",
+    marginBottom: "5px",
+    color: "#333",
+  },
+
+  subtext: {
+    fontSize: "14px",
+    color: "#777",
+    marginBottom: "15px",
+  },
+
+  divider: {
+    height: "1px",
+    background: "#eee",
+    margin: "15px 0 20px",
+  },
+
+  pageTitle: {
+    fontSize: "24px",
+    marginBottom: "10px",
+    color: "#333",
+  },
+
+  text: {
+    fontSize: "15px",
+    color: "#555",
+    lineHeight: "1.6",
+  },
+
+  infoBox: {
+    marginTop: "20px",
+    padding: "14px",
+    background: "#fff4ec",
+    borderRadius: "10px",
+    fontSize: "14px",
+  },
+
+  productList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    marginTop: "15px",
+  },
+
+  productBtn: {
+    textDecoration: "none",
+    padding: "10px",
+    borderRadius: "8px",
+    background: "#fda085",
+    color: "white",
+    textAlign: "center",
+    fontSize: "14px",
+  },
+
+  highlight: {
+    color: "#f76b1c",
+  },
+
+  backBtn: {
+    display: "inline-block",
+    marginTop: "10px",
+    textDecoration: "none",
+    padding: "8px 14px",
+    borderRadius: "8px",
+    background: "#f76b1c",
+    color: "white",
+    fontSize: "14px",
+  },
 }
 
 export default App
