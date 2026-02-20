@@ -1,4 +1,6 @@
 import { Routes, Route, Link, useParams } from "react-router-dom"
+import Analytics from "./pages/Analytics";
+import { useAppContext } from "./context/AppContext";
 
 function Home() {
   return (
@@ -88,6 +90,7 @@ function NotFound() {
 }
 
 function App() {
+  const { state } = useAppContext();
   return (
     <div style={styles.page}>
       <nav style={styles.navbar}>
@@ -95,6 +98,10 @@ function App() {
         <Link style={styles.navlink} to="/about">About</Link>
         <Link style={styles.navlink} to="/contact">Contact</Link>
         <Link style={styles.navlink} to="/products">Products</Link>
+        <Link style={styles.navlink} to="/analytics">Analytics</Link>
+        <span style={styles.navlink}>
+    ❤️ Favorites: {state.favorites.length}
+  </span>
       </nav>
 
       <Routes>
@@ -104,6 +111,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Routes>
     </div>
   )
