@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useParams } from "react-router-dom"
 import Analytics from "./pages/Analytics";
 import { useAppContext } from "./context/AppContext";
+import Reports from "./pages/Reports";
 
 function Home() {
   return (
@@ -97,6 +98,7 @@ function App() {
         <Link style={styles.navlink} to="/">Home</Link>
         <Link style={styles.navlink} to="/about">About</Link>
         <Link style={styles.navlink} to="/contact">Contact</Link>
+        <Link style={styles.navlink} to="/reports">Reports</Link>
         <Link style={styles.navlink} to="/products">Products</Link>
         <Link style={styles.navlink} to="/analytics">Analytics</Link>
         <span style={styles.navlink}>
@@ -108,6 +110,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/reports" element={<Reports />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
